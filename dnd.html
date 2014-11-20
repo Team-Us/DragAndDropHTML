@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+	<head>
+		<title> Drag And Drop </title>
+		<link rel="stylesheet" href="./dnd_css.css"/>
+		<script>
+			function allowDrop(ev) {
+				ev.preventDefault();
+			}
+
+			function drag(ev) {
+				ev.dataTransfer.setData("text", ev.target.id);
+			}
+
+			function drop(ev) {
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("text");
+				ev.target.appendChild(document.getElementById(data));
+			}
+		</script>
+	</head>
+
+	<body>
+		<!-- Title with Instructions -->
+		<div class="instructions">
+			<h1>
+				Drag And Drop
+			</h1>
+		
+			<h3>
+				Place the items on the left into their correct categories by clicking on the item, and dragging
+				it into a table.
+			</h3>
+		</div>
+		
+		<!-- Navigation (Optional) -->
+		<nav class="navBox">
+			<h4>
+				Navigation
+			</h4>
+		</nav>
+		
+		<!-- IMAGES -->
+		<ul class="imageLocation">
+			<h4> 
+				Variables
+			</h4>
+			
+			<li>
+				<img id="drag1" src="./images/Ints/12.png" draggable="true" ondragstart="drag(event)" width="100" height="69">
+			</li>
+			
+			<li>
+				<img id="drag2" src="./images/Strings/bob.png" draggable="true" ondragstart="drag(event)" width="100" height="69">
+			</li>
+			
+			<li>
+				<img id="drag3" src="./images/Ints/46.png" draggable="true" ondragstart="drag(event)" width="100" height="69">
+			</li>
+			
+			<li>
+				<img id="drag4" src="./images/Strings/45.png" draggable="true" ondragstart="drag(event)" width="100" height="69">
+			</li>
+			
+			<li>
+				<img id="drag5" src="./images/Ints/105.png" draggable="true" ondragstart="drag(event)" width="100" height="69">
+			</li>
+		</ul>
+		
+		
+		<!-- TABLES -->
+		<div class="leftBox" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<h4>
+				<!-- Access in CSS as  .leftBox h4  -->
+				Dynamic Title
+			</h4>
+		</div>
+		
+		<div class="rightBox" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<h4>
+				<!-- Access in CSS as  .rightBox h4  -->
+				Dynamic Title
+			</h4>
+		</div>
+		
+		<!-- BUTTONS -->
+		<input type="button" value="Submit" class="submitButton"/>
+		
+		<input type="button" value="Previous Session" class="previousButton"/>
+		
+		<input type="button" value="Next Session" class="nextButton"/>
+	</body>
+</html>
